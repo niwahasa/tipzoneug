@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* TipZone UG - Earthy Olive Green & Amber Dark Theme */
+    --background: 120 25% 5%;
+    --foreground: 45 30% 95%;
+    --card: 120 20% 8%;
+    --card-foreground: 45 30% 95%;
+    --popover: 120 20% 8%;
+    --popover-foreground: 45 30% 95%;
+    --primary: 45 80% 50%;
+    --primary-foreground: 120 25% 5%;
+    --secondary: 120 20% 15%;
+    --secondary-foreground: 45 30% 95%;
+    --muted: 120 15% 18%;
+    --muted-foreground: 45 10% 65%;
+    --accent: 45 80% 50%;
+    --accent-foreground: 120 25% 5%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 120 15% 18%;
+    --input: 120 15% 18%;
+    --ring: 45 80% 50%;
+    --radius: 0.5rem;
+    --sidebar-background: 120 20% 8%;
+    --sidebar-foreground: 45 30% 95%;
+    --sidebar-primary: 45 80% 50%;
+    --sidebar-primary-foreground: 120 25% 5%;
+    --sidebar-accent: 120 15% 18%;
+    --sidebar-accent-foreground: 45 30% 95%;
+    --sidebar-border: 120 15% 18%;
+    --sidebar-ring: 45 80% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'DM Sans', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Syne', sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: 'Syne', sans-serif;
+  }
+  
+  .font-body {
+    font-family: 'DM Sans', sans-serif;
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, #d4a017 0%, #f0c040 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .bg-pitch-pattern {
+    background-image: 
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 49px,
+        rgba(212, 160, 23, 0.03) 49px,
+        rgba(212, 160, 23, 0.03) 50px
+      );
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
