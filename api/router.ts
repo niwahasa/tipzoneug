@@ -1,12 +1,12 @@
-import { authRouter } from "./auth-router";
-import { tipRouter } from "./tip-router";
-import { tipsterRouter } from "./tipster-router";
-import { subscriptionRouter } from "./subscription-router";
-import { practiceRouter } from "./practice-router";
-import { learnRouter } from "./learn-router";
-import { notificationRouter } from "./notification-router";
-import { adminRouter } from "./admin-router";
-import { createRouter, publicQuery } from "./middleware";
+import { authRouter } from "./auth-router.js";
+import { tipRouter } from "./tip-router.js";
+import { tipsterRouter } from "./tipster-router.js";
+import { subscriptionRouter } from "./subscription-router.js";
+import { practiceRouter } from "./practice-router.js";
+import { learnRouter } from "./learn-router.js";
+import { notificationRouter } from "./notification-router.js";
+import { adminRouter } from "./admin-router.js";
+import { createRouter, publicQuery } from "./middleware.js";
 
 export const appRouter = createRouter({
   ping: publicQuery.query(() => ({ ok: true, ts: Date.now() })),

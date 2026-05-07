@@ -1,7 +1,7 @@
 import * as jose from "jose";
 import { scrypt, randomBytes, timingSafeEqual } from "node:crypto";
 import { promisify } from "node:util";
-import { env } from "./env";
+import { env } from "./env.js";
 
 const scryptAsync = promisify(scrypt);
 
