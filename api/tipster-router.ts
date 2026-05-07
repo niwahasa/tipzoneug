@@ -2,7 +2,7 @@ import { z } from "zod";
 import { eq, and, desc, sql } from "drizzle-orm";
 import { createRouter, publicQuery, authedQuery } from "./middleware";
 import { getDb } from "./queries/connection";
-import { users, tipsterProfiles, tips, follows } from "@db/schema";
+import { users, tipsterProfiles, tips, follows } from "../db/schema.js";
 
 export const tipsterRouter = createRouter({
   list: publicQuery
@@ -212,7 +212,7 @@ export const tipsterRouter = createRouter({
       });
 
       // Create application record
-      const { tipsterApplications } = await import("@db/schema");
+      const { tipsterApplications } = await import("../db/schema.js");
       await db.insert(tipsterApplications).values({
         userId: ctx.user.id,
         fullName: input.fullName,

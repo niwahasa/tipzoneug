@@ -9,7 +9,7 @@ import {
   transactions,
   tipsterApplications,
   notifications,
-} from "@db/schema";
+} from "../db/schema.js";
 
 export const adminRouter = createRouter({
   stats: adminQuery.query(async () => {

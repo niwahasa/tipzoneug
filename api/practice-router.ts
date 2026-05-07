@@ -2,7 +2,7 @@ import { z } from "zod";
 import { eq, desc } from "drizzle-orm";
 import { createRouter, authedQuery } from "./middleware";
 import { getDb } from "./queries/connection";
-import { practiceBets, tips, users } from "@db/schema";
+import { practiceBets, tips, users } from "../db/schema.js";
 
 export const practiceRouter = createRouter({
   myBets: authedQuery.query(async ({ ctx }) => {

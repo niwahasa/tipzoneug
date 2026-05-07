@@ -2,7 +2,7 @@ import { z } from "zod";
 import { eq, and } from "drizzle-orm";
 import { createRouter, publicQuery } from "./middleware";
 import { getDb } from "./queries/connection";
-import { learnArticles } from "@db/schema";
+import { learnArticles } from "../db/schema.js";
 
 export const learnRouter = createRouter({
   list: publicQuery

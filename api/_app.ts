@@ -6,7 +6,7 @@ import { appRouter } from "./router.js";
 import { createContext } from "./context.js";
 import { env } from "./lib/env";
 import { createOAuthCallbackHandler } from "./kimi/auth.js";
-import { Paths } from "@contracts/constants";
+import { Paths } from "../contracts/constants.js";
 
 const app = new Hono<{ Bindings: HttpBindings }>();
 

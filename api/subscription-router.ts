@@ -2,7 +2,7 @@ import { z } from "zod";
 import { eq, and, gte, sql } from "drizzle-orm";
 import { createRouter, publicQuery, authedQuery } from "./middleware";
 import { getDb } from "./queries/connection";
-import { subscriptions, transactions, users, tipsterProfiles } from "@db/schema";
+import { subscriptions, transactions, users, tipsterProfiles } from "../db/schema.js";
 
 export const subscriptionRouter = createRouter({
   mySubscriptions: authedQuery.query(async ({ ctx }) => {
@@ -124,7 +124,7 @@ export const subscriptionRouter = createRouter({
 
   pricing: publicQuery.query(async () => {
     const db = getDb();
-    const { platformSettings } = await import("@db/schema");
+    const { platformSettings } = await import("../db/schema.js");
     
     const monthly = await db.query.platformSettings.findFirst({
       where: eq(platformSettings.key, "vip_monthly_price"),

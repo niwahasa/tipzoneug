@@ -1,7 +1,7 @@
 import * as cookie from "cookie";
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
-import { Session } from "@contracts/constants";
+import { Session } from "../contracts/constants.js";
 import { getSessionCookieOptions } from "./lib/cookies.js";
 import { createRouter, authedQuery, publicQuery } from "./middleware.js";
 import { hashPassword, verifyPassword, signSessionToken } from "./lib/auth.js";
