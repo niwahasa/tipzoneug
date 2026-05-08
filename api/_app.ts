@@ -11,6 +11,15 @@ import { Paths } from "../contracts/constants.js";
 const app = new Hono<{ Bindings: HttpBindings }>();
 
 app.use(bodyLimit({ maxSize: 50 * 1024 * 1024 }));
+
+app.onError((err, c) => {
+  console.error(`[Hono Error] ${err.message}`);
+  return c.json({
+    error: "Internal Server Error",
+    message: err.message,
+  }, 500);
+});
+
 app.get(Paths.oauthCallback, createOAuthCallbackHandler());
 app.use("/api/trpc/*", async (c) => {
   return fetchRequestHandler({
