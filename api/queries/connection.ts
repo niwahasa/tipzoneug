@@ -6,9 +6,18 @@ import * as relations from "../../db/relations.js";
 
 const fullSchema = { ...schema, ...relations };
 
-const queryClient = postgres(env.databaseUrl);
+const queryClient = postgres(env.databaseUrl, {
+  connect_timeout: 10,
+  onnotice: console.log,
+  ssl: "require",
+});
 export const db = drizzle(queryClient, { schema: fullSchema });
 
 export function getDb() {
-  return db;
+  try {
+    return db;
+  } catch (err: any) {
+    console.error(`[Database Connection Error] ${err.message}`);
+    throw err;
+  }
 }
