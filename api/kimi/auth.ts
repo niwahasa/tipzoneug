@@ -3,7 +3,7 @@ import { setCookie } from "hono/cookie";
 import * as cookie from "cookie";
 import { env } from "../lib/env.js";
 import { getSessionCookieOptions } from "../lib/cookies.js";
-import { Session } from "../../contracts/constants";
+import { Session } from "../../contracts/constants.js";
 import { signSessionToken, verifySessionToken } from "../lib/auth.js";
 import { findUserById } from "../queries/users.js";
 
