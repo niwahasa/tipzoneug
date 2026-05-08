@@ -14,12 +14,17 @@ export async function findUserByUnionId(unionId: string) {
 }
 
 export async function findUserByEmail(email: string) {
-  const rows = await getDb()
-    .select()
-    .from(schema.users)
-    .where(eq(schema.users.email, email))
-    .limit(1);
-  return rows.at(0);
+  try {
+    const rows = await getDb()
+      .select()
+      .from(schema.users)
+      .where(eq(schema.users.email, email))
+      .limit(1);
+    return rows.at(0);
+  } catch (err: any) {
+    console.error(`[DB Query Error] findUserByEmail: ${err.message}`);
+    throw err;
+  }
 }
 
 export async function findUserById(id: number) {
@@ -32,12 +37,17 @@ export async function findUserById(id: number) {
 }
 
 export async function createUser(data: schema.InsertUser) {
-  const db = getDb();
-  const [result] = await db
-    .insert(schema.users)
-    .values(data)
-    .returning({ id: schema.users.id });
-  return result.id;
+  try {
+    const db = getDb();
+    const [result] = await db
+      .insert(schema.users)
+      .values(data)
+      .returning({ id: schema.users.id });
+    return result.id;
+  } catch (err: any) {
+    console.error(`[DB Query Error] createUser: ${err.message}`);
+    throw err;
+  }
 }
 
 export async function upsertUser(data: InsertUser) {
