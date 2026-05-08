@@ -1,11 +1,11 @@
-import { getDb } from "../api/queries/connection";
+import { getDb } from "../api/queries/connection.js";
 import {
   users,
   tipsterProfiles,
   tips,
   learnArticles,
   platformSettings,
-} from "./schema";
+} from "./schema.js";
 
 const db = getDb();
 
