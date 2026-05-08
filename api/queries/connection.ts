@@ -6,10 +6,14 @@ import * as relations from "../../db/relations.js";
 
 const fullSchema = { ...schema, ...relations };
 
-const queryClient = postgres(env.databaseUrl, {
+const dbUrl = env.databaseUrl;
+const maskedUrl = dbUrl.replace(/:([^:@]+)@/, ":****@");
+console.log(`[Database] Connecting to: ${maskedUrl}`);
+
+const queryClient = postgres(dbUrl, {
   connect_timeout: 10,
   onnotice: console.log,
-  ssl: "require",
+  ssl: false, // Try without explicit SSL first
 });
 export const db = drizzle(queryClient, { schema: fullSchema });
 

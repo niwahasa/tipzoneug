@@ -5,15 +5,21 @@ import { getDb } from "./connection.js";
 import { env } from "../lib/env.js";
 
 export async function findUserByUnionId(unionId: string) {
-  const rows = await getDb()
-    .select()
-    .from(schema.users)
-    .where(eq(schema.users.unionId, unionId))
-    .limit(1);
-  return rows.at(0);
+  try {
+    const rows = await getDb()
+      .select()
+      .from(schema.users)
+      .where(eq(schema.users.unionId, unionId))
+      .limit(1);
+    return rows.at(0);
+  } catch (err: any) {
+    console.error(`[DB Query Error] findUserByUnionId: ${err.message}`);
+    throw err;
+  }
 }
 
 export async function findUserByEmail(email: string) {
+  console.log(`[DB] Looking up user by email: ${email}`);
   try {
     const rows = await getDb()
       .select()
@@ -28,12 +34,17 @@ export async function findUserByEmail(email: string) {
 }
 
 export async function findUserById(id: number) {
-  const rows = await getDb()
-    .select()
-    .from(schema.users)
-    .where(eq(schema.users.id, id))
-    .limit(1);
-  return rows.at(0);
+  try {
+    const rows = await getDb()
+      .select()
+      .from(schema.users)
+      .where(eq(schema.users.id, id))
+      .limit(1);
+    return rows.at(0);
+  } catch (err: any) {
+    console.error(`[DB Query Error] findUserById: ${err.message}`);
+    throw err;
+  }
 }
 
 export async function createUser(data: schema.InsertUser) {
