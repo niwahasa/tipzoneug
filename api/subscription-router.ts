@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { eq, and, gte, sql } from "drizzle-orm";
-import { createRouter, publicQuery, authedQuery } from "./middleware";
-import { getDb } from "./queries/connection";
+import { createRouter, publicQuery, authedQuery } from "./middleware.js";
+import { getDb } from "./queries/connection.js";
 import { subscriptions, transactions, users, tipsterProfiles } from "../db/schema.js";
 
 export const subscriptionRouter = createRouter({

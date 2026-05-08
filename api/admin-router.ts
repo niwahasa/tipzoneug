@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { eq, and, desc, sql, count } from "drizzle-orm";
-import { createRouter, adminQuery } from "./middleware";
-import { getDb } from "./queries/connection";
+import { createRouter, adminQuery } from "./middleware.js";
+import { getDb } from "./queries/connection.js";
 import {
   users,
   tipsterProfiles,

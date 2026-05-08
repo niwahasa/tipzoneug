@@ -4,7 +4,7 @@ import type { HttpBindings } from "@hono/node-server";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { appRouter } from "./router.js";
 import { createContext } from "./context.js";
-import { env } from "./lib/env";
+import { env } from "./lib/env.js";
 import { createOAuthCallbackHandler } from "./kimi/auth.js";
 import { Paths } from "../contracts/constants.js";
 
